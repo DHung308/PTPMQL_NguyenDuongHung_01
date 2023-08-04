@@ -13,7 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TenLop)
+                Mã lớp
+            </th>
+            <th>
+                Tên lớp
             </th>
             <th></th>
         </tr>
@@ -21,6 +24,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Malop)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TenLop)
             </td>
