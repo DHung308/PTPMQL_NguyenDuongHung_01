@@ -22,9 +22,8 @@ namespace NguyenDuongHung_01.Controllers
         // GET: SinhVien
         public async Task<IActionResult> Index()
         {
-              return _context.SinhVien != null ? 
-                          View(await _context.SinhVien.ToListAsync()) :
-                          Problem("Entity set 'NguyenDuongHung_01Context.SinhVien'  is null.");
+            var nguyenDuongHung_01Context = _context.SinhVien.Include(s => s.LopHoc);
+            return View(await nguyenDuongHung_01Context.ToListAsync());
         }
 
         // GET: SinhVien/Details/5
@@ -36,6 +35,7 @@ namespace NguyenDuongHung_01.Controllers
             }
 
             var sinhVien = await _context.SinhVien
+                .Include(s => s.LopHoc)
                 .FirstOrDefaultAsync(m => m.MaSinhVien == id);
             if (sinhVien == null)
             {
@@ -48,6 +48,7 @@ namespace NguyenDuongHung_01.Controllers
         // GET: SinhVien/Create
         public IActionResult Create()
         {
+            ViewData["Malop"] = new SelectList(_context.LopHoc, "Malop", "TenLop");
             return View();
         }
 
@@ -64,6 +65,7 @@ namespace NguyenDuongHung_01.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Malop"] = new SelectList(_context.LopHoc, "Malop", "TenLop", sinhVien.Malop);
             return View(sinhVien);
         }
 
@@ -80,6 +82,7 @@ namespace NguyenDuongHung_01.Controllers
             {
                 return NotFound();
             }
+            ViewData["Malop"] = new SelectList(_context.LopHoc, "Malop", "Malop", sinhVien.Malop);
             return View(sinhVien);
         }
 
@@ -115,6 +118,7 @@ namespace NguyenDuongHung_01.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Malop"] = new SelectList(_context.LopHoc, "Malop", "Malop", sinhVien.Malop);
             return View(sinhVien);
         }
 
@@ -127,6 +131,7 @@ namespace NguyenDuongHung_01.Controllers
             }
 
             var sinhVien = await _context.SinhVien
+                .Include(s => s.LopHoc)
                 .FirstOrDefaultAsync(m => m.MaSinhVien == id);
             if (sinhVien == null)
             {
