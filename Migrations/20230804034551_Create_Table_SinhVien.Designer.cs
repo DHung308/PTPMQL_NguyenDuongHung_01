@@ -10,7 +10,7 @@ using NguyenDuongHung_01.Data;
 namespace NguyenDuongHung_01.Migrations
 {
     [DbContext(typeof(NguyenDuongHung_01Context))]
-    [Migration("20230804033934_Create_Table_SinhVien")]
+    [Migration("20230804034551_Create_Table_SinhVien")]
     partial class Create_Table_SinhVien
     {
         /// <inheritdoc />
@@ -31,6 +31,22 @@ namespace NguyenDuongHung_01.Migrations
                     b.HasKey("Malop");
 
                     b.ToTable("LopHoc");
+                });
+
+            modelBuilder.Entity("NguyenDuongHung_01.Models.SinhVien", b =>
+                {
+                    b.Property<string>("MaSinhVien")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HoTen")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Malop")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MaSinhVien");
+
+                    b.ToTable("SinhVien");
                 });
 #pragma warning restore 612, 618
         }

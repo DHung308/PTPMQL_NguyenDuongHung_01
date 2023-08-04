@@ -15,5 +15,7 @@ namespace NguyenDuongHung_01.Data
         }
 
         public DbSet<NguyenDuongHung_01.Models.LopHoc> LopHoc { get; set; } = default!;
+
+        public DbSet<NguyenDuongHung_01.Models.SinhVien> SinhVien { get; set; } = default!;
     }
 }

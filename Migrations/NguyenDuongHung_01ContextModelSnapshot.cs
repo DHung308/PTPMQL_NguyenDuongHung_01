@@ -29,6 +29,22 @@ namespace NguyenDuongHung_01.Migrations
 
                     b.ToTable("LopHoc");
                 });
+
+            modelBuilder.Entity("NguyenDuongHung_01.Models.SinhVien", b =>
+                {
+                    b.Property<string>("MaSinhVien")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HoTen")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Malop")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MaSinhVien");
+
+                    b.ToTable("SinhVien");
+                });
 #pragma warning restore 612, 618
         }
     }

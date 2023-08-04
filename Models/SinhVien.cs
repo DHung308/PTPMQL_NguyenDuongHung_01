@@ -6,7 +6,7 @@ namespace NguyenDuongHung_01.Models
     {
         [Key]
         public string MaSinhVien{ get; set; }
-        public string  HoTen { get; set; }
-        public string  Malop { get; set; }
+        public string?  HoTen { get; set; }
+        public string?  Malop { get; set; }
     }
 }
