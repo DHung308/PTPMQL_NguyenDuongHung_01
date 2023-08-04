@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using NguyenDuongHung_01.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<NguyenDuongHung_01Context>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("NguyenDuongHung_01Context") ?? throw new InvalidOperationException("Connection string 'NguyenDuongHung_01Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
